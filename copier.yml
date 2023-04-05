@@ -1,0 +1,28 @@
+project_name:
+  type: "str"
+  help: "Project name."
+  placeholder: "my_awesome_project"
+
+project_description:
+  type: "str"
+  help: "Brief project description."
+
+python_requirement:
+  type: str
+  help: "Version constraint for Python interpreter."
+  placeholder: ">=3.8,<4"
+
+project_license:
+  type: "str"
+  help: "Project license."
+  plraceholder: "MIT"
+
+author_name:
+  type: "str"
+  help: Full name of the project author."
+  placeholder: "John Doe"
+
+author_email:
+  type: "str"
+  help: Email of the project author."
+  placeholder: "j.doe@mail.service"

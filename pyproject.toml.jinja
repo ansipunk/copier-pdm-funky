@@ -1,0 +1,51 @@
+[tool.pdm]
+
+[project]
+name = "{{project_name}}"
+version = "{{project_version}}"
+description = "{{project_description}}"
+authors = [ { name = "{{author_name}}", email = "{{author_email}}" } ]
+dependencies = []
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "{{project_license}}" }
+
+[project.optional-dependencies]
+lint = [
+  "mypy>=1.1.1,<2",
+  "ruff>=0.0.261,<1"
+]
+test = [
+  "coverage>=7.2.2,<8",
+  "pytest>=7.2.2,<8",
+  "pytest-asyncio>=0.21.0,<1",
+  "pytest-cov>=4.0.0,<5",
+  "pytest-mock>=3.10.0,<4",
+  "pytest-xdist>=3.2.1,<4",
+]
+
+[build-system]
+requires = [ "pdm-pep517>=1.0.0" ]
+build-backend = "pdm.pep517.api"
+
+[tool.pdm.build]
+includes = [ "{{project_name}}" ]
+
+[tool.ruff]
+select = [ "E", "F", "W", "I", "N", "ANN", "S", "B", "COM", "C40", "DTZ", "G", "PT", "Q", "RSE", "RUF" ]
+ignore = [ "ANN101" ]
+
+[tool.ruff.per-file-ignores]
+"test_*.py" = [ "S101", "ANN201" ]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = [
+  "-n", "auto",
+  "--cov={{project_name}}",
+  "--cov-report=term-missing",
+  "--cov-report=html"
+]
+
+[tool.mypy]
+implicit_optional = true

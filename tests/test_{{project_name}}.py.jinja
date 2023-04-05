@@ -1,0 +1,9 @@
+import {{project_name}}
+
+
+def test_get_greeting_without_name():
+    assert {{project_name}}.get_greeting() == "Hello, stranger!"
+
+
+def test_get_greeting_with_name():
+    assert {{project_name}}.get_greeting("Shrek") == "Hello, Shrek!"

@@ -1,0 +1,27 @@
+# Run ruff and pytest
+default: lint types test-all
+
+# Create virtual environment and install dependencies
+bootstrap:
+  pdm install -G :all
+  echo 'import coverage; coverage.process_startup()' > ./.venv/lib/python3.10/site-packages/sitecustomize.py
+
+# Run editor within virtal environment
+edit:
+  pdm run $EDITOR
+
+# Run static analysis against source code
+lint:
+	pdm run ruff --fix {{project_name}} tests
+
+# Check source code type hints
+types:
+  pdm run mypy {{project_name}}
+
+# Run all project tests
+test-all:
+  pdm run pytest tests
+
+# Run specific tests
+test TEST:
+	pdm run pytest {{TEST}}
